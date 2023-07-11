@@ -1,0 +1,25 @@
+# git
+
+> git init
+> git status
+> git add .
+> git reset
+> git add .
+> git commit -m 'commit inicial'
+> git remote add origin https://github.com/marcoscg/todolist-backend.git
+> git push origin master
+
+# docker compose
+
+> docker compose up -d
+> docker compose logs -f todolist
+> docker compose exec db bash
+> docker compose down
+
+# docker
+
+> docker ps
+> docker image ls
+> docker volume ls
+> docker network ls
+> docker system
