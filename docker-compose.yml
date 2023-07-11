@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  todolist:
+    image: 'spring-boot-todolist'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: todolist
+    depends_on:
+      - db 
+    volumes:
+      - ./:/app:delegated
+    working_dir: /app 
+    user: appuser
+    ports:
+      - 8080:8080   
+    command: ./mvnw spring-boot:run
+    networks:
+      - spring-boot
+
+  db:
+    image: mariadb:10.8.8
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: todolist
+      MARIADB_ROOT_PASSWORD: 123456
+      MARIADB_PASSWORD: 123456
+      MARIADB_USER: user
+    ports:
+      - "3388:3306"
+    networks:
+      - spring-boot      
+
+networks: 
+  spring-boot:
+    driver: bridge
